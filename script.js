@@ -1,5 +1,3 @@
-// Internship data
-
 const internships = [
     {
         id: 1,
@@ -68,11 +66,6 @@ const internships = [
     }
 ];
 
-
-// ---------------------------------
-// Page Navigation
-// ---------------------------------
-
 function showPage(pageId, clickedButton) {
 
     const pages = document.querySelectorAll(".page");
@@ -113,11 +106,6 @@ function openInternships() {
 
     showPage("internships", buttons[1]);
 }
-
-
-// ---------------------------------
-// Display internships
-// ---------------------------------
 
 const internshipList = document.getElementById("internshipList");
 
@@ -210,15 +198,7 @@ function displayInternships(data) {
 
 }
 
-
-// Show all internships initially
-
 displayInternships(internships);
-
-
-// ---------------------------------
-// Search and Filters
-// ---------------------------------
 
 const searchInput = document.getElementById("searchInput");
 const locationFilter = document.getElementById("locationFilter");
@@ -267,11 +247,6 @@ function filterInternships() {
     displayInternships(filteredData);
 }
 
-
-// ---------------------------------
-// Open Application Form
-// ---------------------------------
-
 function openApplication(id) {
 
     const internship = internships.find(function(item) {
@@ -291,8 +266,6 @@ function openApplication(id) {
     document.getElementById("selectedInternship").innerText =
         internship.title + " at " + internship.company;
 
-
-    // Fill application using saved profile
 
     const profile =
         JSON.parse(localStorage.getItem("studentProfile"));
@@ -322,22 +295,12 @@ function openApplication(id) {
 
 }
 
-
-// ---------------------------------
-// Close Application Popup
-// ---------------------------------
-
 function closeApplication() {
 
     document.getElementById("applicationModal").style.display =
         "none";
 
 }
-
-
-// ---------------------------------
-// Submit Application
-// ---------------------------------
 
 const applicationForm =
     document.getElementById("applicationForm");
@@ -366,8 +329,6 @@ applicationForm.addEventListener("submit", function(event) {
     let applications =
         JSON.parse(localStorage.getItem("applications")) || [];
 
-
-    // Check duplicate application
 
     const alreadyApplied =
         applications.some(function(application) {
@@ -427,11 +388,6 @@ applicationForm.addEventListener("submit", function(event) {
     closeApplication();
 
 });
-
-
-// ---------------------------------
-// Display My Applications
-// ---------------------------------
 
 function displayApplications() {
 
@@ -513,11 +469,6 @@ function displayApplications() {
 
 }
 
-
-// ---------------------------------
-// Withdraw Application
-// ---------------------------------
-
 function withdrawApplication(index) {
 
     const answer =
@@ -547,11 +498,6 @@ function withdrawApplication(index) {
     displayApplications();
 
 }
-
-
-// ---------------------------------
-// Save Student Profile
-// ---------------------------------
 
 const profileForm =
     document.getElementById("profileForm");
@@ -604,11 +550,6 @@ profileForm.addEventListener("submit", function(event) {
 
 });
 
-
-// ---------------------------------
-// Load Student Profile
-// ---------------------------------
-
 function loadProfile() {
 
     const profile =
@@ -637,11 +578,6 @@ function loadProfile() {
 
 }
 
-
-// ---------------------------------
-// Close modal by clicking outside
-// ---------------------------------
-
 window.addEventListener("click", function(event) {
 
     const modal =
@@ -656,12 +592,6 @@ window.addEventListener("click", function(event) {
 
 });
 
-
-// Load saved profile when website starts
-
 loadProfile();
-
-
-// Load applications once initially
 
 displayApplications();
